@@ -1,0 +1,2918 @@
+[ {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/agile/1.0/board/62/sprint",
+    "queryStringParameters" : {
+      "state" : [ "active" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "values" : [ {
+        "id" : 5001,
+        "name" : "RIO PI-3 Sprint 4",
+        "state" : "active",
+        "startDate" : "2026-07-16T18:31:49.186245Z",
+        "endDate" : "2026-07-30T18:31:49.186245Z",
+        "goal" : "Ship the RIO PI-3 Sprint 4 commitments."
+      }, {
+        "id" : 5002,
+        "name" : "RIO PI-3 Sprint 5",
+        "state" : "active",
+        "startDate" : "2026-07-30T18:31:49.186245Z",
+        "endDate" : "2026-08-13T18:31:49.186245Z",
+        "goal" : "Ship the RIO PI-3 Sprint 5 commitments."
+      }, {
+        "id" : 5099,
+        "name" : "PLTF Hardening",
+        "state" : "active",
+        "startDate" : "2026-07-18T18:31:49.186245Z",
+        "endDate" : "2026-08-01T18:31:49.186245Z",
+        "goal" : "Ship the PLTF Hardening commitments."
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/agile/1.0/board/62/sprint",
+    "queryStringParameters" : {
+      "state" : [ "closed" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "values" : [ {
+        "id" : 4900,
+        "name" : "RIO PI-3 Sprint 3",
+        "state" : "closed",
+        "startDate" : "2026-07-02T18:31:49.186245Z",
+        "endDate" : "2026-07-15T18:31:49.186245Z",
+        "goal" : "Ship the RIO PI-3 Sprint 3 commitments."
+      }, {
+        "id" : 4800,
+        "name" : "RIO PI-3 Sprint 2",
+        "state" : "closed",
+        "startDate" : "2026-06-18T18:31:49.186245Z",
+        "endDate" : "2026-07-01T18:31:49.186245Z",
+        "goal" : "Ship the RIO PI-3 Sprint 2 commitments."
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/search",
+    "queryStringParameters" : {
+      "jql" : [ ".*sprint = .*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-101",
+        "fields" : {
+          "summary" : "Payment retry orchestration",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ "payments", "resilience" ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-88",
+              "fields" : {
+                "status" : {
+                  "name" : "In Progress"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Dependency"
+            },
+            "outwardIssue" : {
+              "key" : "DATA-42",
+              "fields" : {
+                "status" : {
+                  "name" : "Resolved"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Relates"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-90",
+              "fields" : {
+                "status" : {
+                  "name" : "Open"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "VAL-777",
+              "fields" : {
+                "status" : {
+                  "name" : "To Do"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ {
+            "name" : "VAL 24.3"
+          } ],
+          "customfield_10043" : 5.0,
+          "customfield_11977" : "Given a failed payment, when retried up to 3x, then it settles or dead-letters.",
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-102",
+        "fields" : {
+          "summary" : "Refund ledger reconciliation",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_11977" : "Ledger balances net to zero after refunds."
+        }
+      }, {
+        "key" : "VAL-103",
+        "fields" : {
+          "summary" : "Currency rounding edge cases",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-104",
+        "fields" : {
+          "summary" : "Statement PDF layout",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 2.0,
+          "customfield_34061" : "AC lives only in the fallback field."
+        }
+      }, {
+        "key" : "VAL-105",
+        "fields" : {
+          "summary" : "Webhook signature verify",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : null,
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0,
+          "customfield_11977" : "HMAC signature is validated before processing."
+        }
+      }, {
+        "key" : "VAL-106",
+        "fields" : {
+          "summary" : "Audit log export",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : null,
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_11977" : "Exports are tamper-evident."
+        }
+      }, {
+        "key" : "MXEV-201",
+        "fields" : {
+          "summary" : "Event schema migration",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 5.0,
+          "customfield_11977" : "   "
+        }
+      }, {
+        "key" : "VAL-110",
+        "fields" : {
+          "summary" : "Fraud scoring v2",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 72000,
+          "aggregatetimeoriginalestimate" : 28800,
+          "timetracking" : {
+            "timeSpentSeconds" : 72000,
+            "originalEstimateSeconds" : 28800,
+            "remainingEstimateSeconds" : 14400
+          },
+          "customfield_10043" : 8.0,
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-111",
+        "fields" : {
+          "summary" : "Dispute intake API",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-112",
+        "fields" : {
+          "summary" : "Ledger snapshotting",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Review",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 5.0
+        }
+      }, {
+        "key" : "VAL-114",
+        "fields" : {
+          "summary" : "Settlement batch",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-115",
+        "fields" : {
+          "summary" : "Chargeback sync",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : null,
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 14400,
+          "aggregatetimeoriginalestimate" : 18000,
+          "timetracking" : {
+            "timeSpentSeconds" : 14400,
+            "originalEstimateSeconds" : 18000,
+            "remainingEstimateSeconds" : 3600
+          },
+          "customfield_10043" : 2.0
+        }
+      }, {
+        "key" : "VAL-116",
+        "fields" : {
+          "summary" : "Reporting API pagination",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-117",
+        "fields" : {
+          "summary" : "Onboarding wizard step 3",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-118",
+        "fields" : {
+          "summary" : "Rate limiter tuning",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 2.0
+        }
+      }, {
+        "key" : "VAL-119",
+        "fields" : {
+          "summary" : "Cache invalidation bug",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 5.0
+        }
+      }, {
+        "key" : "VAL-120",
+        "fields" : {
+          "summary" : "Search relevance tweak",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-121",
+        "fields" : {
+          "summary" : "Feature flag cleanup",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 2.0,
+          "customfield_11977" : "Dead flags removed."
+        }
+      }, {
+        "key" : "VAL-130",
+        "fields" : {
+          "summary" : "Metrics dashboard",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-141",
+        "fields" : {
+          "summary" : "Email template refresh",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 10800,
+          "aggregatetimeoriginalestimate" : 36000,
+          "timetracking" : {
+            "timeSpentSeconds" : 10800,
+            "originalEstimateSeconds" : 36000,
+            "remainingEstimateSeconds" : 0
+          },
+          "customfield_10043" : 2.0
+        }
+      }, {
+        "key" : "VAL-142",
+        "fields" : {
+          "summary" : "SSO token refresh",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 0,
+          "aggregatetimeoriginalestimate" : 21600,
+          "timetracking" : {
+            "timeSpentSeconds" : 0,
+            "originalEstimateSeconds" : 21600,
+            "remainingEstimateSeconds" : 21600
+          },
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-143",
+        "fields" : {
+          "summary" : "Locale negotiation",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 28800,
+          "aggregatetimeoriginalestimate" : 28800,
+          "timetracking" : {
+            "timeSpentSeconds" : 28800,
+            "originalEstimateSeconds" : 28800,
+            "remainingEstimateSeconds" : 0
+          },
+          "customfield_10043" : 3.0,
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-144",
+        "fields" : {
+          "summary" : "Spike: GraphQL eval",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ]
+        }
+      }, {
+        "key" : "VAL-145",
+        "fields" : {
+          "summary" : "Copy tweak",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 3600,
+          "aggregatetimeoriginalestimate" : 7200,
+          "timetracking" : {
+            "timeSpentSeconds" : 3600,
+            "originalEstimateSeconds" : 7200,
+            "remainingEstimateSeconds" : 3600
+          },
+          "customfield_10043" : 1.0
+        }
+      }, {
+        "key" : "VAL-146",
+        "fields" : {
+          "summary" : "Config validation",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 36000,
+          "aggregatetimeoriginalestimate" : 28800,
+          "timetracking" : {
+            "timeSpentSeconds" : 36000,
+            "originalEstimateSeconds" : 28800,
+            "remainingEstimateSeconds" : 0
+          },
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-150",
+        "fields" : {
+          "summary" : "Late scope: partner API",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 5.0
+        }
+      }, {
+        "key" : "VAL-151",
+        "fields" : {
+          "summary" : "Descoped: legacy import",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-152",
+        "fields" : {
+          "summary" : "Committed at planning",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 8.0
+        }
+      }, {
+        "key" : "VAL-161",
+        "fields" : {
+          "summary" : "KYC provider swap",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 8.0,
+          "customfield_12471" : "VAL-26931"
+        }
+      }, {
+        "key" : "VAL-162",
+        "fields" : {
+          "summary" : "Tax engine upgrade",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "DATA-42",
+              "fields" : {
+                "status" : {
+                  "name" : "Resolved"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0,
+          "customfield_12471" : "VAL-26931"
+        }
+      }, {
+        "key" : "VAL-163",
+        "fields" : {
+          "summary" : "Notification retries",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Relates"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-90",
+              "fields" : {
+                "status" : {
+                  "name" : "Open"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-164",
+        "fields" : {
+          "summary" : "Balance cache warmup",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "VAL-778",
+              "fields" : {
+                "status" : {
+                  "name" : "To Do"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-165",
+        "fields" : {
+          "summary" : "Ledger export v2",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-91"
+            }
+          } ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-160",
+        "fields" : {
+          "summary" : "Low-risk chore",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 2.0,
+          "customfield_11977" : "Trivial."
+        }
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/search",
+    "queryStringParameters" : {
+      "jql" : [ ".*status in.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-301",
+        "fields" : {
+          "summary" : "Payout export",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Ready for Release",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0
+        }
+      }, {
+        "key" : "VAL-302",
+        "fields" : {
+          "summary" : "Reconcile report",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Ready to Test",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 5.0,
+          "customfield_11977" : "Reconciliation totals match ledger.",
+          "customfield_12471" : "VAL-26931"
+        }
+      }, {
+        "key" : "MXEV-303",
+        "fields" : {
+          "summary" : "Schema publish",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In UAT",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0,
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-304",
+        "fields" : {
+          "summary" : "Fee schedule update",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Ready for Release",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 2.0
+        }
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/greenhopper/1.0/rapid/charts/velocity",
+    "queryStringParameters" : {
+      "rapidViewId" : [ "62" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "sprints" : [ {
+        "id" : 4700,
+        "name" : "Sprint 1"
+      }, {
+        "id" : 4800,
+        "name" : "Sprint 2"
+      }, {
+        "id" : 4900,
+        "name" : "Sprint 3"
+      }, {
+        "id" : 4950,
+        "name" : "Sprint 3b"
+      }, {
+        "id" : 4980,
+        "name" : "Sprint 3c"
+      }, {
+        "id" : 5000,
+        "name" : "Sprint 3d"
+      }, {
+        "id" : 5001,
+        "name" : "RIO PI-3 Sprint 4"
+      } ],
+      "velocityStatEntries" : {
+        "4700" : {
+          "estimated" : {
+            "value" : 34.0
+          },
+          "completed" : {
+            "value" : 30.0
+          }
+        },
+        "4800" : {
+          "estimated" : {
+            "value" : 40.0
+          },
+          "completed" : {
+            "value" : 38.0
+          }
+        },
+        "4900" : {
+          "estimated" : {
+            "value" : 38.0
+          },
+          "completed" : {
+            "value" : 41.0
+          }
+        },
+        "4950" : {
+          "estimated" : {
+            "value" : 42.0
+          },
+          "completed" : {
+            "value" : 36.0
+          }
+        },
+        "4980" : {
+          "estimated" : {
+            "value" : 30.0
+          },
+          "completed" : {
+            "value" : 30.0
+          }
+        },
+        "5000" : {
+          "estimated" : {
+            "value" : 45.0
+          },
+          "completed" : {
+            "value" : 39.0
+          }
+        }
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/agile/1.0/sprint/5001"
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "id" : 5001,
+      "name" : "RIO PI-3 Sprint 4",
+      "state" : "active",
+      "startDate" : "2026-07-16T18:31:49.186245Z",
+      "endDate" : "2026-07-30T18:31:49.186245Z",
+      "goal" : "Ship the RIO PI-3 Sprint 4 commitments."
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/agile/1.0/sprint/5001/issue",
+    "queryStringParameters" : {
+      "fields" : [ ".*customfield_10043.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-101",
+        "fields" : {
+          "customfield_10043" : 5.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-102",
+        "fields" : {
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-103",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-104",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-105",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-106",
+        "fields" : {
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "MXEV-201",
+        "fields" : {
+          "customfield_10043" : 5.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-110",
+        "fields" : {
+          "customfield_10043" : 8.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-111",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-112",
+        "fields" : {
+          "customfield_10043" : 5.0,
+          "status" : {
+            "name" : "In Review",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-114",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-115",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-116",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-117",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-118",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-119",
+        "fields" : {
+          "customfield_10043" : 5.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-120",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-121",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-130",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-141",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-142",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-143",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-144",
+        "fields" : {
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-145",
+        "fields" : {
+          "customfield_10043" : 1.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-146",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-150",
+        "fields" : {
+          "customfield_10043" : 5.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-19T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "Sprint",
+              "from" : "",
+              "to" : "5001, 5002"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-151",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-20T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "Sprint",
+              "from" : "5001",
+              "to" : ""
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-152",
+        "fields" : {
+          "customfield_10043" : 8.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-15T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "Sprint",
+              "from" : "",
+              "to" : "5001"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-161",
+        "fields" : {
+          "customfield_10043" : 8.0,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-162",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-163",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-164",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-165",
+        "fields" : {
+          "customfield_10043" : 3.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-160",
+        "fields" : {
+          "customfield_10043" : 2.0,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/agile/1.0/sprint/5001/issue",
+    "queryStringParameters" : {
+      "fields" : [ ".*updated.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-101",
+        "fields" : {
+          "summary" : "Payment retry orchestration",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-102",
+        "fields" : {
+          "summary" : "Refund ledger reconciliation",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-103",
+        "fields" : {
+          "summary" : "Currency rounding edge cases",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-104",
+        "fields" : {
+          "summary" : "Statement PDF layout",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-105",
+        "fields" : {
+          "summary" : "Webhook signature verify",
+          "assignee" : null,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-106",
+        "fields" : {
+          "summary" : "Audit log export",
+          "assignee" : null,
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "MXEV-201",
+        "fields" : {
+          "summary" : "Event schema migration",
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-110",
+        "fields" : {
+          "summary" : "Fraud scoring v2",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-15T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-111",
+        "fields" : {
+          "summary" : "Dispute intake API",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-20T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-112",
+        "fields" : {
+          "summary" : "Ledger snapshotting",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Review",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-20T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "In Review"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-114",
+        "fields" : {
+          "summary" : "Settlement batch",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-19T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Bob Kaur"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-115",
+        "fields" : {
+          "summary" : "Chargeback sync",
+          "assignee" : null,
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        }
+      }, {
+        "key" : "VAL-116",
+        "fields" : {
+          "summary" : "Reporting API pagination",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-17T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-20T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Bob Kaur"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-117",
+        "fields" : {
+          "summary" : "Onboarding wizard step 3",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-19T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-13T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Cara Diaz"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          }, {
+            "created" : "2026-07-16T18:31:49.186+0000",
+            "author" : {
+              "displayName" : "Cara Diaz"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Done"
+            } ]
+          }, {
+            "created" : "2026-07-19T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Cara Diaz"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "Done",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-118",
+        "fields" : {
+          "summary" : "Rate limiter tuning",
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "updated" : "2026-07-19T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-11T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          }, {
+            "created" : "2026-07-14T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Done"
+            } ]
+          }, {
+            "created" : "2026-07-17T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "Done",
+              "toString" : "In Progress"
+            } ]
+          }, {
+            "created" : "2026-07-19T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Dan Poe"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Done"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-119",
+        "fields" : {
+          "summary" : "Cache invalidation bug",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-15T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-09T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          }, {
+            "created" : "2026-07-12T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Done"
+            } ]
+          }, {
+            "created" : "2026-07-15T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Alice Ng"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "Done",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-120",
+        "fields" : {
+          "summary" : "Search relevance tweak",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "updated" : "2026-07-19T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-13T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Bob Kaur"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "To Do",
+              "toString" : "In Progress"
+            } ]
+          }, {
+            "created" : "2026-07-16T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Bob Kaur"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Shipped"
+            } ]
+          }, {
+            "created" : "2026-07-19T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Bob Kaur"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "Shipped",
+              "toString" : "In Progress"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-121",
+        "fields" : {
+          "summary" : "Feature flag cleanup",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "updated" : "2026-07-20T18:31:49.186+0000"
+        }
+      }, {
+        "key" : "VAL-130",
+        "fields" : {
+          "summary" : "Metrics dashboard",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "updated" : "2026-07-11T18:31:49.186+0000"
+        },
+        "changelog" : {
+          "histories" : [ {
+            "created" : "2026-07-15T18:31:49.186245Z",
+            "author" : {
+              "displayName" : "Cara Diaz"
+            },
+            "items" : [ {
+              "field" : "status",
+              "fromString" : "In Progress",
+              "toString" : "Done"
+            } ]
+          } ]
+        }
+      }, {
+        "key" : "VAL-141",
+        "fields" : {
+          "summary" : "Email template refresh",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-142",
+        "fields" : {
+          "summary" : "SSO token refresh",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-143",
+        "fields" : {
+          "summary" : "Locale negotiation",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-144",
+        "fields" : {
+          "summary" : "Spike: GraphQL eval",
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-145",
+        "fields" : {
+          "summary" : "Copy tweak",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-146",
+        "fields" : {
+          "summary" : "Config validation",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-150",
+        "fields" : {
+          "summary" : "Late scope: partner API",
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-151",
+        "fields" : {
+          "summary" : "Descoped: legacy import",
+          "assignee" : {
+            "displayName" : "Dan Poe"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-152",
+        "fields" : {
+          "summary" : "Committed at planning",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-161",
+        "fields" : {
+          "summary" : "KYC provider swap",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-162",
+        "fields" : {
+          "summary" : "Tax engine upgrade",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-163",
+        "fields" : {
+          "summary" : "Notification retries",
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-164",
+        "fields" : {
+          "summary" : "Balance cache warmup",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-165",
+        "fields" : {
+          "summary" : "Ledger export v2",
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      }, {
+        "key" : "VAL-160",
+        "fields" : {
+          "summary" : "Low-risk chore",
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          }
+        }
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/VAL-101",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "VAL-101",
+      "fields" : {
+        "summary" : "Payment retry orchestration",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "In Progress",
+          "statusCategory" : {
+            "name" : "In Progress"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Alice Ng"
+        },
+        "labels" : [ "payments", "resilience" ],
+        "issuelinks" : [ {
+          "type" : {
+            "name" : "Blocks"
+          },
+          "outwardIssue" : {
+            "key" : "PLTF-88",
+            "fields" : {
+              "status" : {
+                "name" : "In Progress"
+              }
+            }
+          }
+        }, {
+          "type" : {
+            "name" : "Dependency"
+          },
+          "outwardIssue" : {
+            "key" : "DATA-42",
+            "fields" : {
+              "status" : {
+                "name" : "Resolved"
+              }
+            }
+          }
+        }, {
+          "type" : {
+            "name" : "Relates"
+          },
+          "outwardIssue" : {
+            "key" : "PLTF-90",
+            "fields" : {
+              "status" : {
+                "name" : "Open"
+              }
+            }
+          }
+        }, {
+          "type" : {
+            "name" : "Blocks"
+          },
+          "outwardIssue" : {
+            "key" : "VAL-777",
+            "fields" : {
+              "status" : {
+                "name" : "To Do"
+              }
+            }
+          }
+        } ],
+        "fixVersions" : [ {
+          "name" : "VAL 24.3"
+        } ],
+        "customfield_10043" : 5.0,
+        "customfield_11977" : "Given a failed payment, when retried up to 3x, then it settles or dead-letters.",
+        "customfield_12471" : "VAL-26930",
+        "description" : "<p>Orchestrate idempotent payment retries with backoff.</p>"
+      },
+      "renderedFields" : {
+        "description" : "<p>Orchestrate idempotent payment retries with backoff.</p>",
+        "customfield_11977" : "Given a failed payment, when retried up to 3x, then it settles or dead-letters."
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/VAL-104",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "VAL-104",
+      "fields" : {
+        "summary" : "Statement PDF layout",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "To Do",
+          "statusCategory" : {
+            "name" : "To Do"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Cara Diaz"
+        },
+        "labels" : [ ],
+        "issuelinks" : [ ],
+        "fixVersions" : [ ],
+        "customfield_10043" : 2.0,
+        "customfield_34061" : "AC lives only in the fallback field."
+      },
+      "renderedFields" : {
+        "customfield_34061" : "AC lives only in the fallback field."
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/PLTF-88",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields,changelog" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "PLTF-88",
+      "fields" : {
+        "summary" : "Platform: connection pool exhaustion",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "In Progress",
+          "statusCategory" : {
+            "name" : "In Progress"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Priya Rao"
+        },
+        "labels" : [ ],
+        "issuelinks" : [ ],
+        "fixVersions" : [ {
+          "name" : "Platform 24.3"
+        } ]
+      },
+      "renderedFields" : { },
+      "changelog" : {
+        "histories" : [ {
+          "created" : "2026-07-12T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Priya Rao"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "To Do",
+            "toString" : "In Progress"
+          } ]
+        }, {
+          "created" : "2026-07-19T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Priya Rao"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "In Progress",
+            "toString" : "Blocked"
+          } ]
+        } ]
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/DATA-42",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields,changelog" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "DATA-42",
+      "fields" : {
+        "summary" : "Data: nightly ETL backfill",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "Resolved",
+          "statusCategory" : {
+            "name" : "Done"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Sam Lee"
+        },
+        "labels" : [ ],
+        "issuelinks" : [ ],
+        "fixVersions" : [ ]
+      },
+      "renderedFields" : { },
+      "changelog" : {
+        "histories" : [ {
+          "created" : "2026-07-01T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Sam Lee"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "To Do",
+            "toString" : "In Progress"
+          } ]
+        }, {
+          "created" : "2026-07-07T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Sam Lee"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "In Progress",
+            "toString" : "Resolved"
+          } ]
+        } ]
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/PLTF-91",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields,changelog" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "PLTF-91",
+      "fields" : {
+        "summary" : "Platform: TLS cert rotation",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "To Do",
+          "statusCategory" : {
+            "name" : "To Do"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Priya Rao"
+        },
+        "labels" : [ ],
+        "issuelinks" : [ ],
+        "fixVersions" : [ ]
+      },
+      "renderedFields" : { },
+      "changelog" : {
+        "histories" : [ {
+          "created" : "2026-07-17T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Priya Rao"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "Backlog",
+            "toString" : "To Do"
+          } ]
+        } ]
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/PLTF-90",
+    "queryStringParameters" : {
+      "expand" : [ "renderedFields,changelog" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "PLTF-90",
+      "fields" : {
+        "summary" : "Platform: metrics exporter",
+        "issuetype" : {
+          "name" : "Story"
+        },
+        "status" : {
+          "name" : "Open",
+          "statusCategory" : {
+            "name" : "To Do"
+          }
+        },
+        "assignee" : {
+          "displayName" : "Priya Rao"
+        },
+        "labels" : [ ],
+        "issuelinks" : [ ],
+        "fixVersions" : [ ]
+      },
+      "renderedFields" : { },
+      "changelog" : {
+        "histories" : [ {
+          "created" : "2026-07-18T18:31:49.186245Z",
+          "author" : {
+            "displayName" : "Priya Rao"
+          },
+          "items" : [ {
+            "field" : "status",
+            "fromString" : "Backlog",
+            "toString" : "Open"
+          } ]
+        } ]
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/VAL-26930",
+    "queryStringParameters" : {
+      "fields" : [ ".*customfield_24665.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "VAL-26930",
+      "fields" : {
+        "summary" : "Payments resilience",
+        "customfield_24665" : 21.0
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/issue/VAL-26931",
+    "queryStringParameters" : {
+      "fields" : [ ".*customfield_24665.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "key" : "VAL-26931",
+      "fields" : {
+        "summary" : "KYC & tax uplift",
+        "customfield_24665" : 13.0
+      }
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/search",
+    "queryStringParameters" : {
+      "jql" : [ ".*Epic Link.*VAL-26930.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-101",
+        "fields" : {
+          "summary" : "Payment retry orchestration",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ "payments", "resilience" ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-88",
+              "fields" : {
+                "status" : {
+                  "name" : "In Progress"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Dependency"
+            },
+            "outwardIssue" : {
+              "key" : "DATA-42",
+              "fields" : {
+                "status" : {
+                  "name" : "Resolved"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Relates"
+            },
+            "outwardIssue" : {
+              "key" : "PLTF-90",
+              "fields" : {
+                "status" : {
+                  "name" : "Open"
+                }
+              }
+            }
+          }, {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "VAL-777",
+              "fields" : {
+                "status" : {
+                  "name" : "To Do"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ {
+            "name" : "VAL 24.3"
+          } ],
+          "customfield_10043" : 5.0,
+          "customfield_11977" : "Given a failed payment, when retried up to 3x, then it settles or dead-letters.",
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-110",
+        "fields" : {
+          "summary" : "Fraud scoring v2",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 72000,
+          "aggregatetimeoriginalestimate" : 28800,
+          "timetracking" : {
+            "timeSpentSeconds" : 72000,
+            "originalEstimateSeconds" : 28800,
+            "remainingEstimateSeconds" : 14400
+          },
+          "customfield_10043" : 8.0,
+          "customfield_12471" : "VAL-26930"
+        }
+      }, {
+        "key" : "VAL-143",
+        "fields" : {
+          "summary" : "Locale negotiation",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "Done",
+            "statusCategory" : {
+              "name" : "Done"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Alice Ng"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "aggregatetimespent" : 28800,
+          "aggregatetimeoriginalestimate" : 28800,
+          "timetracking" : {
+            "timeSpentSeconds" : 28800,
+            "originalEstimateSeconds" : 28800,
+            "remainingEstimateSeconds" : 0
+          },
+          "customfield_10043" : 3.0,
+          "customfield_12471" : "VAL-26930"
+        }
+      } ]
+    }
+  }
+}, {
+  "httpRequest" : {
+    "method" : "GET",
+    "path" : "/rest/api/2/search",
+    "queryStringParameters" : {
+      "jql" : [ ".*Epic Link.*VAL-26931.*" ]
+    }
+  },
+  "httpResponse" : {
+    "statusCode" : 200,
+    "headers" : {
+      "content-type" : [ "application/json" ]
+    },
+    "body" : {
+      "issues" : [ {
+        "key" : "VAL-161",
+        "fields" : {
+          "summary" : "KYC provider swap",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "In Progress",
+            "statusCategory" : {
+              "name" : "In Progress"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Bob Kaur"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 8.0,
+          "customfield_12471" : "VAL-26931"
+        }
+      }, {
+        "key" : "VAL-162",
+        "fields" : {
+          "summary" : "Tax engine upgrade",
+          "issuetype" : {
+            "name" : "Story"
+          },
+          "status" : {
+            "name" : "To Do",
+            "statusCategory" : {
+              "name" : "To Do"
+            }
+          },
+          "assignee" : {
+            "displayName" : "Cara Diaz"
+          },
+          "labels" : [ ],
+          "issuelinks" : [ {
+            "type" : {
+              "name" : "Blocks"
+            },
+            "outwardIssue" : {
+              "key" : "DATA-42",
+              "fields" : {
+                "status" : {
+                  "name" : "Resolved"
+                }
+              }
+            }
+          } ],
+          "fixVersions" : [ ],
+          "customfield_10043" : 3.0,
+          "customfield_12471" : "VAL-26931"
+        }
+      } ]
+    }
+  }
+} ]

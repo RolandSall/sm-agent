@@ -1,0 +1,44 @@
+# Test configuration. This file (src/test/resources) takes precedence over the
+# main src/main/resources/application.yml on the test classpath, so no real
+# environment variables (JIRA_BASE_URL, ...) are needed to start the context.
+#
+# scrum.jira.base-url is intentionally a throwaway here — it is overridden at
+# runtime by @DynamicPropertySource in CucumberSpringConfiguration, which points
+# it at the dynamically-allocated WireMock port. No real network is ever touched.
+spring:
+  application:
+    name: scrum-mcp-server-test
+  ai:
+    mcp:
+      server:
+        name: scrum
+        version: 0.1.0
+        protocol: STREAMABLE
+
+scrum:
+  governance:
+    read-only: true
+  jira:
+    base-url: http://localhost:0
+    token: test-token
+    project-keys: PROJ
+    board-id: 1
+    feature-issue-type: Epic
+    team-name: RIO
+    dependency-issue-type: Dependency
+    fields:
+      acceptance-criteria:
+        - customfield_10036
+      story-points: customfield_10002
+      logged-hours: customfield_10040
+      # Placeholder ids matching the JiraJson test builders (epicLink / devJobPoints).
+      epic-link: customfield_12471
+      dev-job: customfield_24665
+      # Dependency fields — match the JiraJson test builders (dependOn / dependents / deliverySprint).
+      depend-on: customfield_27471
+      dependents: customfield_27470
+      delivery-sprint: customfield_14960
+
+logging:
+  level:
+    io.github.scrumagent: INFO

@@ -1,0 +1,15 @@
+.env
+.env.local
+*.local
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.idea/
+*.iml
+.scrum-env
+.mcp.json
+scripts/jira-check-report.txt
+scrum-mcp-server.tar.gz
+what_already_exist
+# Private feature-planning notes (not tracked)
+docs/FEATURE-PLANS.md

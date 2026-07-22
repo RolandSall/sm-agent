@@ -1,0 +1,43 @@
+# Containerized MockServer variant of the local dev harness.
+#
+# Unlike ../docker-compose.yml (which points the server at REAL Jira via .env), this launches a
+# STANDALONE MockServer loaded with the SAME rich fixtures as `./gradlew :scrum-mcp-server:runLocal`,
+# plus the scrum-agent server wired to it. MCP-OFF is driven via ./scrum; MCP-ON via :8097/mcp.
+#
+# Run from the repo root:
+#   ./gradlew :scrum-mcp-server:bootJar                  # build the app jar the image copies in
+#   ./gradlew :scrum-mcp-server:generateMockInitializer  # write mockserver/initializer.json (dated NOW)
+#   docker compose -f development/docker-compose.yml up --build
+#
+# Then: ./scrum hygiene   (MCP off)   |   point a harness at http://localhost:8097/mcp (MCP on)
+# The initializer is date-stamped at generation; if the sprint stops resolving as "active", rerun
+# generateMockInitializer and restart.
+services:
+  mockserver:
+    image: mockserver/mockserver:5.15.0
+    environment:
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializer.json
+      MOCKSERVER_LOG_LEVEL: WARN
+    volumes:
+      - ./mockserver/initializer.json:/config/initializer.json:ro
+    ports:
+      - "1080:1080"
+
+  scrum:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: scrum-mcp-server:latest
+    depends_on:
+      - mockserver
+    environment:
+      # The image bundles the prod application.yml (field ids customfield_10043/11977/34061, which the
+      # fixtures mirror), so only identity + the mock base URL are supplied here.
+      JIRA_BASE_URL: http://mockserver:1080
+      JIRA_TOKEN: local-dev-token
+      JIRA_PROJECT_KEYS: VAL,MXEV
+      JIRA_BOARD_ID: "62"
+      JIRA_SPRINT_FILTER: RIO
+      SCRUM_GOVERNANCE_READ_ONLY: "false"   # allow the prepare -> commit publish flow
+    ports:
+      - "8097:8097"

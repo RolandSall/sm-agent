@@ -1,0 +1,197 @@
+#!/usr/bin/env bash
+#
+# scrum — a thin curl wrapper over the scrum-mcp-server REST API (Mode B: MCP disabled, terminal
+# allowed). No JVM: it talks to the already-running server, URL-encodes params, reports errors, and
+# pretty-prints JSON (via jq if present). This is what the harness runs instead of hand-crafting curl.
+#
+# Server must be up:  ./gradlew :scrum-mcp-server:bootRun   (serves /api on 8097)
+# Override host with: SCRUM_API_URL=http://host:port
+# Dry run (print the request, don't send): SCRUM_PRINT=1 scrum <cmd> ...
+#
+set -eo pipefail
+
+# Resolve the API base URL: an explicit SCRUM_API_URL wins; otherwise read .scrum-env (written by
+# setup.sh with whatever free port Docker allocated); otherwise fall back to the default dev port.
+here="$(cd "$(dirname "$0")" && pwd)"
+if [ -z "${SCRUM_API_URL:-}" ] && [ -f "$here/.scrum-env" ]; then
+  . "$here/.scrum-env"
+fi
+BASE="${SCRUM_API_URL:-http://localhost:8097}"
+
+usage() {
+  cat >&2 <<'EOF'
+scrum — query the scrum-mcp-server REST API (start it with: ./gradlew :scrum-mcp-server:bootRun)
+
+  scrum hygiene [--type Story] [--assignee "Alice"]
+  scrum sprint-flow [--type Story] [--assignee "Alice"]
+  scrum wip [--per-assignee N] [--team N] [--type Story] [--assignee "Alice"]
+  scrum release-queue "Ready for Release" "Ready to Test" ... [--type Story] [--assignee "Alice"]
+  scrum stories-to-test ["Ready for Acceptance" ...] [--type Story] [--assignee "Alice"]
+  scrum feature-effort [EPIC-KEY ...]
+  scrum worklog [--type Story] [--assignee "Alice"] [--hours-per-day N]
+  scrum estimate-variance [--min-estimate N]
+  scrum velocity [N]
+  scrum sprints [state]        # state = active (default) | future | closed | comma-combo
+  scrum scope-change
+  scrum metrics-preview
+  scrum deps <ISSUE-KEY>
+  scrum sprint-deps
+  scrum risk [--committed X] [--available Y] [--type Story] [--assignee "Alice"]
+  scrum issue <ISSUE-KEY>
+
+  # --type filters to one issue type; --assignee to one person. Both optional; omit for no filter.
+
+Env: SCRUM_API_URL (default http://localhost:8097); SCRUM_PRINT=1 prints the request instead of sending.
+EOF
+  exit 2
+}
+
+# get <path> [--data-urlencode k=v ...]
+get() {
+  local path="$1"; shift
+  if [ "${SCRUM_PRINT:-}" = "1" ]; then
+    local line="GET ${BASE}${path}" sep='?'
+    while [ "$#" -gt 0 ]; do
+      if [ "$1" = "--data-urlencode" ]; then line="${line}${sep}$2"; sep='&'; shift 2; else shift; fi
+    done
+    printf '%s\n' "$line"; return 0
+  fi
+
+  local out code body
+  if ! out=$(curl -sS -G "$@" "${BASE}${path}" -w $'\n%{http_code}' 2>/dev/null); then
+    echo "scrum: cannot reach ${BASE} — is the server running? (./gradlew :scrum-mcp-server:bootRun)" >&2
+    exit 1
+  fi
+  code=${out##*$'\n'}
+  body=${out%$'\n'*}
+  [ "$code" -ge 400 ] && echo "scrum: HTTP $code from ${path}" >&2
+  if command -v jq >/dev/null 2>&1; then printf '%s' "$body" | jq .; else printf '%s\n' "$body"; fi
+}
+
+# post <path> — POST with an empty body. Used by endpoints that stage server-side state
+# (e.g. metrics-preview registers a governance preview), so they must not be a cacheable GET.
+post() {
+  local path="$1"; shift
+  if [ "${SCRUM_PRINT:-}" = "1" ]; then printf 'POST %s%s\n' "${BASE}" "${path}"; return 0; fi
+
+  local out code body
+  if ! out=$(curl -sS -X POST "${BASE}${path}" -w $'\n%{http_code}' 2>/dev/null); then
+    echo "scrum: cannot reach ${BASE} — is the server running? (./gradlew :scrum-mcp-server:bootRun)" >&2
+    exit 1
+  fi
+  code=${out##*$'\n'}
+  body=${out%$'\n'*}
+  [ "$code" -ge 400 ] && echo "scrum: HTTP $code from ${path}" >&2
+  if command -v jq >/dev/null 2>&1; then printf '%s' "$body" | jq .; else printf '%s\n' "$body"; fi
+}
+
+[ "$#" -ge 1 ] || usage
+cmd="$1"; shift
+
+case "$cmd" in
+  scope-change)   get /api/scope-change ;;
+  metrics-preview) post /api/metrics-preview ;;
+
+  hygiene)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --type)     a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee) a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/hygiene "${a[@]}" ;;
+
+  worklog)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --type)          a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee)      a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      --hours-per-day) a+=(--data-urlencode "hoursPerDay=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/worklog "${a[@]}" ;;
+
+  sprint-flow)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --type)     a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee) a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/sprint-flow "${a[@]}" ;;
+
+  estimate-variance)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --min-estimate) a+=(--data-urlencode "minEstimateHours=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/estimate-variance "${a[@]}" ;;
+
+  wip)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --per-assignee) a+=(--data-urlencode "perAssignee=$2"); shift 2 ;;
+      --team)         a+=(--data-urlencode "team=$2"); shift 2 ;;
+      --type)         a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee)     a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/wip "${a[@]}" ;;
+
+  release-queue)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --type)     a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee) a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *)          a+=(--data-urlencode "status=$1"); shift ;;
+    esac; done
+    get /api/release-queue "${a[@]}" ;;
+
+  stories-to-test)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --type)     a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee) a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *)          a+=(--data-urlencode "status=$1"); shift ;;
+    esac; done
+    get /api/stories-to-test "${a[@]}" ;;
+
+  feature-effort)
+    a=(); for e in "$@"; do a+=(--data-urlencode "epic=$e"); done
+    get /api/feature-effort "${a[@]}" ;;
+
+  velocity)
+    if [ "$#" -ge 1 ]; then get /api/velocity --data-urlencode "sprints=$1"; else get /api/velocity; fi ;;
+
+  sprints)
+    if [ "$#" -ge 1 ]; then get /api/sprints --data-urlencode "state=$1"; else get /api/sprints; fi ;;
+
+  deps)
+    [ "$#" -ge 1 ] || usage
+    key="$1"; shift
+    [ "$#" -eq 0 ] || usage
+    get "/api/dependencies/${key}" ;;
+
+  sprint-deps)
+    [ "$#" -eq 0 ] || usage
+    get /api/dependencies ;;
+
+  risk)
+    a=()
+    while [ "$#" -gt 0 ]; do case "$1" in
+      --committed)     a+=(--data-urlencode "committed=$2"); shift 2 ;;
+      --available)     a+=(--data-urlencode "available=$2"); shift 2 ;;
+      --type)     a+=(--data-urlencode "issueType=$2"); shift 2 ;;
+      --assignee) a+=(--data-urlencode "assignee=$2"); shift 2 ;;
+      *) usage ;;
+    esac; done
+    get /api/risk "${a[@]}" ;;
+
+  issue)
+    [ "$#" -ge 1 ] || usage
+    get "/api/issue/$1" ;;
+
+  help|-h|--help) usage ;;
+  *) usage ;;
+esac

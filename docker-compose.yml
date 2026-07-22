@@ -1,0 +1,13 @@
+# REST-mode container (Mode B: the curl / ./scrum fallback for when MCP is disabled).
+# The host port is DYNAMIC — Docker picks a free one; setup.sh discovers it and writes .scrum-env.
+# (MCP-over-stdio does NOT use this — the harness launches the image directly via .mcp.json.)
+services:
+  scrum:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: scrum-mcp-server:latest
+    env_file: .env
+    ports:
+      - "8097"            # host side omitted => Docker allocates a free port
+    restart: unless-stopped

@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: scrum-mcp-server
+  ai:
+    mcp:
+      server:
+        name: scrum
+        version: 0.1.0
+        # STREAMABLE http transport; the harness may also launch us over stdio.
+        protocol: STREAMABLE
+
+server:
+  # 8092 collides with the ai-template shipping container on this machine; 8097 avoids it.
+  port: 8097
+
+# --- Configuration philosophy: application.yml holds ONLY Tier 1 ---
+# Tier 1 = instance identity + secrets the agent must never guess.
+# Team policy (WIP limits, thresholds, statuses, link types, capacity) is NOT here —
+# it arrives as tool parameters the agent supplies (from the skill, or by asking the human).
+scrum:
+  governance:
+    # Mode-neutral safety gate, enforced in the command handlers (MCP + CLI + REST).
+    read-only: true
+  jira:
+    base-url: ${JIRA_BASE_URL}
+    token: ${JIRA_TOKEN}
+    # One or more project keys the team works in (comma-separated), e.g. JIRA_PROJECT_KEYS=VAL,MXEV.
+    # Both count as "ours"; anything else is another team (for cross-team dependency/risk detection).
+    project-keys: ${JIRA_PROJECT_KEYS}
+    board-id: ${JIRA_BOARD_ID:}
+    # A board can have several sprints active at once; this substring picks the team's
+    # (e.g. JIRA_SPRINT_FILTER=ALPHA to pick the "ALPHA PI.." sprints on a shared board).
+    sprint-name-filter: ${JIRA_SPRINT_FILTER:}
+    # DEV-ONLY: skip TLS cert validation when the corporate Jira CA isn't in the JVM truststore
+    # (curl works via the OS store; the JVM has its own). For local piloting only — never in prod;
+    # the production fix is importing the corporate CA into a truststore. Default false.
+    insecure-tls: ${JIRA_INSECURE_TLS:false}
+    # A "feature" on this instance is an Epic; child stories group under it via the Epic-Link field.
+    # Swap to the real "Feature" issue type here if the instance uses one.
+    feature-issue-type: Epic
+    # Our team's identity as it appears in the Dependency "Depend On"/"Dependent/s" option fields.
+    # A blocker WE face = an open Dependency where Dependent/s == this team and Depend On != this team.
+    team-name: RIO
+    # Cross-team dependencies are modelled as issues of this type, linked to an Epic via Epic Link.
+    dependency-issue-type: Dependency
+    # Hours in one working day — used only to re-express effort hours as derived working-days
+    # (the hours math is untouched). Team policy; defaults to 8 when unset or non-positive.
+    working-hours-per-day: ${JIRA_WORKING_HOURS_PER_DAY:8}
+    fields:
+      # Per-instance custom-field IDs (confirmed for this Jira via the diagnostic).
+      # First acceptance-criteria match wins.
+      acceptance-criteria:
+        - customfield_11977
+        - customfield_34061
+      story-points: customfield_10043
+      # Epic Link — the field a story uses to point at its parent Epic ("feature").
+      epic-link: customfield_12471
+      # The Epic's own "Planned Dev Job" estimate (story points) — a synced snapshot that drifts from
+      # the live child sum, so it is surfaced only as a reference ingredient (we compute sums live).
+      dev-job: customfield_24665
+      # Dependency-issue fields (confirmed for this Jira): who we wait on / who waits on us, and the
+      # target delivery sprint (a Jira Sprint custom field; parsed best-effort for name + endDate).
+      depend-on: customfield_27471
+      dependents: customfield_27470
+      delivery-sprint: customfield_14960
+      # No logged-hours custom field on this instance — leave unset to use native worklog/timetracking.
+      # logged-hours: customfield_XXXXX
+
+logging:
+  level:
+    io.github.scrumagent: DEBUG

@@ -1,0 +1,17 @@
+# ALLOWLIST, not a blocklist. Everything is excluded by default; only the two paths the Dockerfile
+# actually COPYs are let back in. A blocklist silently ships whatever you forget to add — and this
+# repo contains plenty that must never reach the image or the daemon: developer skills (.claude/),
+# CLAUDE.md, the AGENT-*.md Jira runbooks (which name internal hosts), scripts/, and .env.
+#
+# Consequence to remember: adding a new COPY to the Dockerfile means adding a matching `!` line here,
+# or the build fails with "file not found". That failure is the point — it's louder than a leak.
+*
+
+# The pre-built jar (built on the host by setup.sh / docker.sh build — never inside Docker).
+!scrum-mcp-server/build/libs/*.jar
+
+# The capability skills and the Scrum Master agent, carried as a payload for
+# `docker.sh install-skills`. NOT the developer skills in .claude/ — those are useless to a Scrum
+# Master and shouldn't travel.
+!.github/skills
+!.github/agents

@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "scrum-local": {
+      "type": "http",
+      "url": "http://localhost:8097/mcp"
+    }
+  }
+}

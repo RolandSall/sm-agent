@@ -1,0 +1,41 @@
+# Local manual-dev profile — activated by localdev.LocalDevRunner (spring.profiles.active=local).
+#
+# Overlays the throwaway src/test/resources/application.yml. Points Jira at the in-JVM MockServer
+# (started by the runner on :1080) and MIRRORS THE PROD FIELD MAPPINGS so the whole flow behaves
+# exactly as it would against the real Jira — this is an integration harness, not a unit test.
+server:
+  port: 8097
+
+scrum:
+  governance:
+    # Writable here so the prepare -> commit publish flow can be driven end to end locally.
+    read-only: false
+  jira:
+    base-url: http://localhost:1080
+    token: local-dev-token
+    # "Ours" — anything else (PLTF-*, DATA-*) is another team, for cross-team dependency/risk.
+    project-keys: VAL,MXEV
+    board-id: 62
+    # The board hosts several active sprints; this substring picks the team's ("RIO ...").
+    sprint-name-filter: RIO
+    feature-issue-type: Epic
+    team-name: RIO
+    dependency-issue-type: Dependency
+    # Hours in one working day — re-expresses effort hours as derived working-days (prod parity).
+    working-hours-per-day: 8
+    fields:
+      acceptance-criteria:
+        - customfield_11977
+        - customfield_34061
+      story-points: customfield_10043
+      epic-link: customfield_12471
+      dev-job: customfield_24665
+      depend-on: customfield_27471
+      dependents: customfield_27470
+      delivery-sprint: customfield_14960
+      # logged-hours intentionally UNSET -> native timetracking.timeSpentSeconds (prod parity).
+
+logging:
+  level:
+    io.github.scrumagent: INFO
+    org.mockserver: WARN
